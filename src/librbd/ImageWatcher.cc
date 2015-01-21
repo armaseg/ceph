@@ -590,6 +590,7 @@ void ImageWatcher::acknowledge_notify(uint64_t notify_id, uint64_t handle,
 
 void ImageWatcher::reregister_watch() {
   ldout(m_image_ctx.cct, 10) << "re-registering image watch" << dendl;
+  handle_header_update();
 
   {
     RWLock::WLocker l(m_image_ctx.owner_lock);
